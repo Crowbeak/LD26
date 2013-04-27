@@ -26,6 +26,9 @@ def on_draw():
         title.draw()
         title.game_title.draw()
         title.credits.draw()
+        pyglet.text.Label("Game starts in: {} seconds.".format(title.timer/60+1),
+                          font_size = 20, x=40, y=150,
+                          color=(0,0,0,255)).draw()
     else:
         potato.draw()
         for eye in potato.eyes:
@@ -34,8 +37,8 @@ def on_draw():
     
         #Draw score and time remaining.
         if score.timer >= 0:
-            pyglet.text.Label("{}".format(score.timer), x=10, y=30,
-                              color=(0,0,0,255)).draw()
+            pyglet.text.Label("Seconds Remaining: {}".format(score.timer/60+1),
+                              x=10, y=30, color=(0,0,0,255)).draw()
             pyglet.text.Label("Score: {}".format(score.eyes_poked),
                               x=10, y=10, color=(0,0,0,255)).draw()
         else:
@@ -48,7 +51,7 @@ def on_draw():
                               color=(0,0,0,255)).draw()
             pyglet.text.Label("Thank you for playing Poke!",
                               anchor_x="center", anchor_y="center",
-                              font_size=20, x=400, y=2750,
+                              font_size=20, x=400, y=275,
                               color=(0,0,0,255)).draw()
 
 def update(dt):

@@ -46,7 +46,6 @@ class Potato(pyglet.sprite.Sprite):
             new_eye = _Eye()
             while distance((new_eye.x, new_eye.y)) > 200:
                 new_eye = _Eye()
-            #Eye not on other eye
             self.eyes.append(new_eye)
     
     def reinitialize(self):
