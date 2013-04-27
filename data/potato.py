@@ -1,7 +1,6 @@
 #TODO: Prevent overlapping eyes.
 
 import random
-import math
 import pyglet
 
 import resources
@@ -44,7 +43,11 @@ class Potato(pyglet.sprite.Sprite):
         
         self.eyes = []
         for i in range(random.randint(2,6)):
-            self.eyes.append(_Eye())
+            new_eye = _Eye()
+            while distance((new_eye.x, new_eye.y)) > 200:
+                new_eye = _Eye()
+            #Eye not on other eye
+            self.eyes.append(new_eye)
     
     def reinitialize(self):
         self.__init__()
