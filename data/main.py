@@ -3,22 +3,17 @@ import pyglet
 import resources
 import potato
 import needle
+import score
 
 game_window = pyglet.window.Window(800, 600)
 game_window.set_caption("Poke")
 game_window.set_mouse_visible(False)
 
+score = score.Score()
+
 bg = pyglet.sprite.Sprite(img=resources.bg_img)
 potato = potato.Potato()
-needle = needle.Needle(potato)
-
-"""
-cursor = pyglet.window.ImageMouseCursor(resources.needle_img,
-                                        resources.needle_img.width,
-                                        resources.needle_img.height)
-game_window.set_mouse_cursor(cursor)
-game_window.set_mouse_visible(True)
-"""
+needle = needle.Needle(potato, score)
 
 @game_window.event
 def on_draw():
@@ -28,14 +23,15 @@ def on_draw():
     for eye in potato.eyes:
         eye.draw()
     needle.draw()
+    pyglet.text.Label("Score: {}".format(score.eyes_poked),
+                      x=50, y=50, color=(0,0,0,255)).draw()
 
 def update(dt):
     if potato.opacity < 255:
         potato.opacity += 5
         for eye in potato.eyes:
             eye.opacity += 5
-    elif potato.is_dead:
-        resources.oh.play()
+    else:
         potato.reinitialize()
 
 game_window.push_handlers(needle)

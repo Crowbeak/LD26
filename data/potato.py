@@ -46,14 +46,5 @@ class Potato(pyglet.sprite.Sprite):
         for i in range(random.randint(2,6)):
             self.eyes.append(_Eye())
     
-    def is_dead(self):
-        dead = True
-        for eye in self.eyes:
-            if not eye.dead:
-                dead = False
-                break
-        
-        return dead
-    
     def reinitialize(self):
         self.__init__()
