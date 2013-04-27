@@ -25,5 +25,4 @@ crow_logo.anchor_x = crow_logo.width
 
 # Sounds ----------------------------------------------------------------------
 ow = pyglet.resource.media("ow.mp3", streaming=False)
-#oh = pyglet.resource.media("oh.mp3", streaming=False)
 fanfare = pyglet.resource.media("fanfare.mp3", streaming=False)
