@@ -10,6 +10,7 @@ game_window.set_caption("Poke")
 game_window.set_mouse_visible(False)
 
 score = score.Score()
+final_score = None
 
 bg = pyglet.sprite.Sprite(img=resources.bg_img)
 potato = potato.Potato()
@@ -23,8 +24,15 @@ def on_draw():
     for eye in potato.eyes:
         eye.draw()
     needle.draw()
+    
+    #Draw score and time remaining.
     pyglet.text.Label("Score: {}".format(score.eyes_poked),
-                      x=50, y=50, color=(0,0,0,255)).draw()
+                      x=10, y=10, color=(0,0,0,255)).draw()
+    pyglet.text.Label("{}".format(score.time), x=50, y=50,
+                      anchor_x="right", color=(0,0,0,255)).draw()
+    
+    if final_score is not None:
+        final_score.draw()
 
 def update(dt):
     if potato.opacity < 255:
@@ -33,6 +41,16 @@ def update(dt):
             eye.opacity += 5
     else:
         potato.reinitialize()
+    
+    score.time -= 1
+    
+    if score.time <= 0:
+        potato.visible = False
+        for eye in potato.eyes:
+            eye.visible = False
+        final_score = pyglet.text.Label("Final Score: {}".format(score.eyes_poked),
+                                        anchor_x="center", anchor_y="center",
+                                        x=400, y=300, color=(0,0,0,255))
 
 game_window.push_handlers(needle)
 
