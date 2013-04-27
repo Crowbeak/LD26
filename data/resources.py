@@ -23,4 +23,5 @@ needle_img.scale = 0.3
 
 # Sounds ----------------------------------------------------------------------
 ow = pyglet.resource.media("ow.mp3", streaming=False)
-oh = pyglet.resource.media("oh.mp3", streaming=False)
+#oh = pyglet.resource.media("oh.mp3", streaming=False)
+fanfare = pyglet.resource.media("fanfare.mp3", streaming=False)

@@ -13,7 +13,7 @@ class Needle(pyglet.sprite.Sprite):
     
     def on_mouse_press(self, x, y, button, modifiers):
         for eye in self._potato.eyes:
-            if distance((x, y), (eye.x, eye.y)) < 30:
+            if distance((x, y), (eye.x, eye.y)) < 30 and self._score.time > 0:
                 eye.kill()
                 self._score.eyes_poked += 1
     
