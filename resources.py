@@ -1,5 +1,8 @@
 import pyglet
 
+pyglet.resource.path = ["resources"]
+pyglet.resource.reindex()
+
 # Images ----------------------------------------------------------------------
 def _center_image(img):
     img.anchor_x = img.width/2
